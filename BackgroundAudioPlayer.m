@@ -84,7 +84,7 @@ const double kDefaultVolumeStepInterval = 0.05;
 {
     if (self.currentAudioFilePath != nil)
     {
-        _currentPlayer = [[BackgroundAVPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.currentAudioFilePath] error:nil];
+        _currentPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:self.currentAudioFilePath] error:nil];
         _currentPlayer.volume = 0.0; //initially set the volume to zero so that we can do the fadeIn effect if required
         [_currentPlayer prepareToPlay];
         _currentPlayer.numberOfLoops = _looping ? -1 : 0;
@@ -139,24 +139,6 @@ const double kDefaultVolumeStepInterval = 0.05;
     }];
 
     [_faderQueue addOperation:fadeOut];
-}
-
-#pragma mark AVAudioPlayerDelegate
-
-/* audioPlayerDidFinishPlaying:successfully: is called when a sound has finished playing. This method is NOT called if the player is stopped due to an interruption. */
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
-{
-    NSLog(@"audioPlayerDidFinishPlaying successfully:%@", flag ? @"Yes" : @"no");
-}
-
-
-@end
-
-@implementation BackgroundAVPlayer
-
--(void)dealloc
-{
-    NSLog(@"Deallocating BackgroundAVPlayer");
 }
 
 @end

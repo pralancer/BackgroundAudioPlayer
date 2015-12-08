@@ -23,9 +23,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BackgroundAVPlayer : AVAudioPlayer
-
-@end
 
 @interface BackgroundAudioPlayer : NSObject
 
@@ -61,10 +58,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, nullable) NSString *currentAudioFilePath;
 
 //AVPlayer instance used by the player for direct manipulation of the player if required
-@property (nonatomic, retain, nullable) BackgroundAVPlayer *currentPlayer;
+@property (nonatomic, retain, nullable) AVAudioPlayer *currentPlayer;
 
 //AVPlayer instance used by the player for direct manipulation of the player if required
-@property (nonatomic, retain, nullable) BackgroundAVPlayer *fadeOutPlayer;
+@property (nonatomic, retain, nullable) AVAudioPlayer *fadeOutPlayer;
 
 @end
 
